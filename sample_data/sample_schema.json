@@ -1,0 +1,149 @@
+{
+  "bio": {
+    "name": "Alex Thompson",
+    "position": "Software Architect",
+    "contact": {
+      "email": "alex.thompson@example.com",
+      "phone_number": "+1-555-123-4567"
+    },
+    "social": {
+      "github": "https://github.com/alexthompson",
+      "linkedin": "https://linkedin.com/in/alex-thompson",
+      "portfolio": "https://alexthompson.dev"
+    }
+  },
+  "education": [
+    {
+      "institution": "Stanford University",
+      "credential": "Master of Science",
+      "field": "Software Engineering",
+      "graduation_year": "2020",
+      "thesis": "Distributed Systems Optimization in Cloud Computing",
+      "location": {
+        "city": "Stanford",
+        "country": "United States"
+      }
+    },
+    {
+      "institution": "University of California Berkeley",
+      "credential": "Bachelor of Science",
+      "field": "Computer Science",
+      "graduation_year": "2018",
+      "location": {
+        "city": "Berkeley",
+        "country": "United States"
+      }
+    }
+  ],
+  "work_experience": [
+    {
+      "company": "TechCorp Global",
+      "position": "Senior Software Architect",
+      "period": {
+        "start": "Jun 2023",
+        "end": "Present"
+      },
+      "location": {
+        "city": "San Francisco",
+        "country": "United States"
+      },
+      "highlights": [
+        "Architected microservices platform serving 2M+ daily users",
+        "Led team of 12 engineers across 3 time zones",
+        "Reduced infrastructure costs by 35% through optimization"
+      ]
+    },
+    {
+      "company": "DataFlow Systems",
+      "position": "Lead Backend Engineer",
+      "period": {
+        "start": "Mar 2021",
+        "end": "May 2023"
+      },
+      "location": {
+        "city": "Seattle",
+        "country": "United States"
+      },
+      "highlights": [
+        "Designed and implemented real-time data processing pipeline",
+        "Improved system throughput by 200%",
+        "Mentored 8 junior developers"
+      ]
+    },
+    {
+      "company": "InnovateLabs",
+      "position": "Software Engineer",
+      "period": {
+        "start": "Jan 2020",
+        "end": "Feb 2021"
+      },
+      "location": {
+        "city": "Boston",
+        "country": "United States"
+      },
+      "highlights": [
+        "Developed cloud-native applications using Kubernetes",
+        "Implemented automated testing framework",
+        "Reduced deployment time by 60%"
+      ]
+    },
+    {
+      "company": "StartupXYZ",
+      "position": "Full Stack Developer",
+      "period": {
+        "start": "Jun 2018",
+        "end": "Dec 2019"
+      },
+      "location": {
+        "city": "Austin",
+        "country": "United States"
+      },
+      "highlights": [
+        "Built MVP for Series A startup from ground up",
+        "Implemented payment processing system",
+        "Managed cloud infrastructure on AWS"
+      ]
+    }
+  ],
+  "skills": {
+    "technical": {
+      "languages": ["Java", "Python", "Rust", "TypeScript", "Kotlin"],
+      "tools": [
+        "PostgreSQL",
+        "Kubernetes",
+        "AWS",
+        "GitLab CI",
+        "Git",
+        "Redis",
+        "Elasticsearch",
+        "Terraform",
+        "Apache Kafka",
+        "Prometheus",
+        "Datadog",
+        "Azure"
+      ]
+    },
+    "soft": [
+      "System Design",
+      "Technical Leadership",
+      "Project Management",
+      "Communication",
+      "Mentoring",
+      "Problem Solving"
+    ]
+  },
+  "languages": [
+    {
+      "name": "English",
+      "profeciency": "Native"
+    },
+    {
+      "name": "Spanish",
+      "profeciency": "Professional"
+    },
+    {
+      "name": "Mandarin",
+      "profeciency": "Conversational"
+    }
+  ]
+}
