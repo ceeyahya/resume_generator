@@ -1,6 +1,5 @@
-package main
+package helpers
 
-// Helper function to get max of two integers
 func Max(a, b int) int {
 	if a > b {
 		return a

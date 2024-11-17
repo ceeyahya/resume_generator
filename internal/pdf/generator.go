@@ -1,10 +1,7 @@
-package main
+package pdf
 
 import (
-	"encoding/json"
-	"fmt"
 	"log"
-	"os"
 
 	"github.com/johnfercher/maroto/v2"
 	"github.com/johnfercher/maroto/v2/pkg/config"
@@ -14,26 +11,10 @@ import (
 	"github.com/johnfercher/maroto/v2/pkg/core"
 	"github.com/johnfercher/maroto/v2/pkg/props"
 	"github.com/johnfercher/maroto/v2/pkg/repository"
+
+	"github.com/ceeyahya/resume_generator/internal/models"
+	"github.com/ceeyahya/resume_generator/internal/renderer"
 )
-
-func main() {
-	resumeData, err := LoadResume("data/resume.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	marotoCore := GetMaroto()
-
-	resume, err := GenerateResume(marotoCore, resumeData)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = resume.Save("docs/YahyaChahineResume.pdf")
-	if err != nil {
-		log.Fatal(err)
-	}
-}
 
 func GetMaroto() core.Maroto {
 	fontFamily := "Heliotrope"
@@ -64,28 +45,12 @@ func GetMaroto() core.Maroto {
 	return m
 }
 
-func GenerateResume(m core.Maroto, resume *Resume) (core.Document, error) {
-	RenderBioSection(m, resume.Bio)
-	RenderEducationSection(m, resume.Education)
-	RenderExperienceSection(m, resume.WorkExperience)
-	RenderSkillsSection(m, resume.Skills)
-	RenderLanguagesSection(m, resume.Languages)
+func GenerateResume(m core.Maroto, resume *models.Resume) (core.Document, error) {
+	renderer.BioSection(m, resume.Bio)
+	renderer.EducationSection(m, resume.Education)
+	renderer.WorkExperienceSection(m, resume.WorkExperience)
+	renderer.SkillsSection(m, resume.Skills)
+	renderer.LanguagesSection(m, resume.Languages)
 
 	return m.Generate()
-}
-
-func LoadResume(filepath string) (*Resume, error) {
-	file, err := os.ReadFile(filepath)
-	if err != nil {
-		log.Fatal("couldn't read the data file", err)
-	}
-
-	var resume Resume
-
-	err = json.Unmarshal(file, &resume)
-	if err != nil {
-		return nil, fmt.Errorf("error while parsing the data file: %s", err)
-	}
-
-	return &resume, nil
 }

@@ -1,4 +1,4 @@
-package main
+package models
 
 type Resume struct {
 	Bio            Bio              `json:"bio"`
