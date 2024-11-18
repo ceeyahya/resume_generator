@@ -19,7 +19,7 @@ func BioSection(m core.Maroto, bio models.Bio) {
 
 	m.AddAutoRow(
 		text.NewCol(12, bio.Position, props.Text{
-			Size:  textBase,
+			Size:  textL,
 			Style: fontstyle.Normal,
 			Top:   baseSpacing,
 		}),

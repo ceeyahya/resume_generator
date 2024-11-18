@@ -1,7 +1,10 @@
 package pdf
 
 import (
+	"encoding/json"
+	"fmt"
 	"log"
+	"os"
 
 	"github.com/johnfercher/maroto/v2"
 	"github.com/johnfercher/maroto/v2/pkg/config"
@@ -15,6 +18,22 @@ import (
 	"github.com/ceeyahya/resume_generator/internal/models"
 	"github.com/ceeyahya/resume_generator/internal/renderer"
 )
+
+func LoadResume(filepath string) (*models.Resume, error) {
+	file, err := os.ReadFile(filepath)
+	if err != nil {
+		log.Fatal("couldn't read the data file", err)
+	}
+
+	var resume models.Resume
+
+	err = json.Unmarshal(file, &resume)
+	if err != nil {
+		return nil, fmt.Errorf("error while parsing the data file: %s", err)
+	}
+
+	return &resume, nil
+}
 
 func GetMaroto() core.Maroto {
 	fontFamily := "Heliotrope"

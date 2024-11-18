@@ -1,17 +1,38 @@
 package main
 
 import (
-	"encoding/json"
+	"flag"
 	"fmt"
 	"log"
 	"os"
 
-	"github.com/ceeyahya/resume_generator/internal/models"
 	"github.com/ceeyahya/resume_generator/internal/pdf"
 )
 
 func main() {
-	resumeData, err := LoadResume("data/resume.json")
+	var (
+		dataFilePath   string
+		outputFileName string
+	)
+
+	flag.StringVar(&dataFilePath, "filepath", "", "Path to the data file")
+	flag.StringVar(&outputFileName, "output", "", "Name of the output file")
+
+	flag.Parse()
+
+	if dataFilePath == "" {
+		log.Fatal("the filepath flag is required")
+	}
+
+	if _, err := os.Stat(dataFilePath); os.IsNotExist(err) {
+		log.Fatalf("datafile does not exist: %s", dataFilePath)
+	}
+
+	if err := os.MkdirAll("docs", 0755); err != nil {
+		log.Fatalf("could not create output directory: %v", err)
+	}
+
+	resumeData, err := pdf.LoadResume(dataFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -23,24 +44,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = resume.Save("docs/YahyaChahineResume.pdf")
+	err = resume.Save(fmt.Sprintf("docs/%s.pdf", outputFileName))
 	if err != nil {
 		log.Fatal(err)
 	}
-}
 
-func LoadResume(filepath string) (*models.Resume, error) {
-	file, err := os.ReadFile(filepath)
-	if err != nil {
-		log.Fatal("couldn't read the data file", err)
-	}
-
-	var resume models.Resume
-
-	err = json.Unmarshal(file, &resume)
-	if err != nil {
-		return nil, fmt.Errorf("error while parsing the data file: %s", err)
-	}
-
-	return &resume, nil
+	fmt.Printf("Resume generated successfully: %s.pdf\n", outputFileName)
 }
